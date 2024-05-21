@@ -24,6 +24,12 @@ export default defineNuxtConfig({
 		families: {
 			Pacifico: true,
 		}
+	},
+
+	content: {
+		experimental: {
+			search: true
+		}
 	}
 
 })

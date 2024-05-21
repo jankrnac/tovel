@@ -3,7 +3,7 @@
     
     <div class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
         <nuxt-link :to="'/'+product.slug">
-            <nuxt-img :src="product.images[0]" :alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
+            <nuxt-img :src="product.images[0]" sizes="236px":alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
         </nuxt-link>
     </div>
     <div class="flex flex-1 flex-col space-y-3 py-4">

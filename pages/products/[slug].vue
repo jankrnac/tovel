@@ -1,6 +1,6 @@
 <template>
 <div class="bg-white">
-    <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-[1800px] lg:px-8">
+    <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-app lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
 
           	<!-- Image gallery -->
@@ -11,7 +11,7 @@
 						<Tab v-for="image in product.images" :key="image.id" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" v-slot="{ selected }">
 							<span class="sr-only">{{ image.name }}</span>
 							<span class="absolute inset-0 overflow-hidden rounded-md">
-								<nuxt-img :src="image.cloud_id" alt="" class="h-full w-full object-cover object-center" />
+								<nuxt-img :src="product.images[0]" alt="" sizes="200px" class="h-full w-full object-cover object-center" />
 							</span>
 							<span :class="[selected ? 'ring-indigo-500' : 'ring-transparent', 'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2']" aria-hidden="true" />
 						</Tab>
@@ -20,7 +20,7 @@
   
             	<TabPanels class="aspect-h-1 aspect-w-1 w-full">
               		<TabPanel v-for="image in product.images" :key="image.id">
-                		<nuxt-img :src="image.cloud_id" :alt="image.alt" class="h-full w-full object-cover object-center sm:rounded-lg" />
+                		<nuxt-img :src="image" :alt="image.alt" sizes="xl:852px" class="h-full w-full object-cover object-center sm:rounded-lg" />
               		</TabPanel>
             	</TabPanels>
 
@@ -61,9 +61,9 @@
 				<div v-if="cart.products.map(o => o.id).includes(product.id)" class="flex">
                     
                     <div class="flex items-center space-x-2 mr-2 bg-gray-800 rounded-md px-4 py-3 text-gray-200">
-                        <div class="i-ph-minus text-3xl cursor-pointer hover:text-red-500" @click="minus(product)" />
-                            <input class="font-semibold text-xl bg-transparent w-24 text-center hover:outline-0 focus:outline-0" type="text" v-model="cart.products.find((item) => {return item.id == product.id}).pivot.qty" />
-                        <div class="i-ph-plus text-3xl cursor-pointer hover:text-green-700" @click="plus(product)" />
+                        <Icon name="ph:minus" class="text-3xl cursor-pointer hover:text-red-500" @click="minus(product)" />
+                            <input class="font-semibold text-xl bg-transparent w-24 text-center hover:outline-0 focus:outline-0" type="text" v-model="cart.products.filter(e => e == product.slug).length" />
+                        <Icon name="ph:plus" class="i-ph-plus text-3xl cursor-pointer hover:text-green-700" @click="plus(product)" />
                     </div>
 
   
