@@ -14,9 +14,16 @@ export const useCart = () => {
         cart.value = response.value[0]
     }
 
-    const addToCart = async (product, qty) => {
+    const add = async (product, qty) => {
         
-        const { data:response } = await useApiFetch(`carts/${cart.value.cookie_id}`, {method: 'POST', 'body':{'product':product, 'qty': qty}})
+        const response = await $fetch(`/api/carts/${cart.value.id}/add`, {
+            method: 'PUT', 
+            body:{
+                'product':product, 
+                'qty': qty,
+                'products': cart.value.products
+            }
+        })
 
         cart.value = response.value
     }   
@@ -32,9 +39,14 @@ export const useCart = () => {
     }
 
     const plus = async (product) => {
-        const newQty = cart.value.products.find(o => o.id === product.id).pivot.qty + 1
+        const newQty = cart.value.products.filter(o => o.id === product.id).length + 1
 
-        const { data:response } = await useApiFetch(`carts/${cart.value.cookie_id}`, {method: 'PUT', body:{'product':product, 'qty': newQty}})
+        const response = await $fetch(`/api/carts/${cart.value.id}/plus`, {
+            method: 'PUT', 
+            body: {
+                'product':product.slug, 
+            }
+        })
 
         cart.value = response.value
 
@@ -79,7 +91,7 @@ export const useCart = () => {
     return {
         getCart,
         cart,
-        addToCart,
+        add,
         minus,
         plus,
         remove,
