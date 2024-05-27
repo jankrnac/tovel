@@ -5,14 +5,16 @@ export default eventHandler(async (event) =>
     const client = await serverSupabaseClient(event)
 
     const id = getRouterParam(event, 'id')
+    const body = await readBody(event)
+
+    body.products.find(e => e.slug == body.product).qty++
 
     const { data } = await client
         .from('carts')
-        .update({guest_id: cookie_id})
-        .eq({id: id})
+        .update({ products:body.products })
+        .eq('id', id)
         .select()
+        .single()
 
         return data
-
-    
 })

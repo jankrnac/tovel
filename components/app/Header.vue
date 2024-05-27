@@ -4,7 +4,6 @@
 <!-- Mobile menu -->
 <AppMobileMenu ref="mobileMenu"/>
 
-
 <header class="relative">
     <nav aria-label="Top">
         <div class="p-6">
@@ -56,11 +55,11 @@
 
                                         <transition name="fade">
                                             <PopoverPanel class="absolute left-1/2 z-10 mt-2 flex w-screen max-w-min -translate-x-1/2 px-4">
-                                                <div class="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
-                                                <a v-for="item in solutions" :key="item.name" :href="item.href" class="flex p-2 hover:text-indigo-600">
-                                                    <div :class="item.icon" class="h-5 w-5 mr-3" aria-hidden="true" />
-                                                    <span>{{ item.name }}</span>
-                                                </a>
+                                                <div class="w-64 shrink rounded-xl bg-white p-2 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
+                                                <nuxt-link to="/signin"  class="flex justify-between p-2 hover:bg-gray-100 rounded-md">
+                                                    <span class="pl-1">Sign in</span>
+                                                    <Icon name="ph:sign-in-thin" size="22px"/>
+                                                </nuxt-link>
                                                 </div>
                                             </PopoverPanel>
                                         </transition>

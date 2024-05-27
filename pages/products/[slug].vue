@@ -18,7 +18,7 @@
 					</TabList>
 				</div>
   
-            	<TabPanels class="aspect-h-1 aspect-w-1 w-full">
+            	<TabPanels class="aspect-h-1 aspect-w-1 w-full mb-5">
               		<TabPanel v-for="image in product.images" :key="image.id">
                 		<nuxt-img :src="image" :alt="image.alt" sizes="xl:852px" class="h-full w-full object-cover object-center sm:rounded-lg" />
               		</TabPanel>

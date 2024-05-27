@@ -19,9 +19,9 @@
             
             <div v-if="cart.products.map(e => e.slug).includes(product.slug)" class="flex items-center 0 text-gray-100 text-sm">
 
-                <div class="rounded-l flex items-center bg-gray-800 hover:bg-gray-700 px-1.5 py-1"><Icon name="i-ph-plus-bold" size="16px" class="cursor-pointer " @click="plus(product)" /></div>
-                    <div class="font-semibold bg-gray-800 py-0.5">{{cart.products.filter(e => e.slug == product.slug).length}}</div>
-                    <div class="rounded-r flex items-center bg-gray-800 hover:bg-gray-700 px-1.5 py-1"><Icon name="i-ph-minus-bold" size="16px" class="cursor-pointer" @click="minus(product)" /></div>
+                <div class="rounded-l flex items-center bg-gray-800 hover:bg-gray-700 px-1.5 py-1 cursor-pointer"  @click="plus(product)" ><Icon name="i-ph-plus-bold" size="16px" /></div>
+                    <div class="font-semibold bg-gray-800 py-0.5">{{cart.products.find(e => e.slug == product.slug).qty}}</div>
+                    <div class="rounded-r flex items-center bg-gray-800 hover:bg-gray-700 px-1.5 py-1 cursor-pointer" @click="minus(product)"><Icon name="i-ph-minus-bold" size="16px" class="cursor-pointer" /></div>
 
             </div>
 

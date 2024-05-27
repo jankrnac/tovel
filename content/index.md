@@ -11,5 +11,10 @@ product: product1
 caption: Bestsellery
 products: 
     - product1
+    - product2
+    - product3
+    - product4
+    - product5
+    - product6
 ---
 ::

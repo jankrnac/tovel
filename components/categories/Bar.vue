@@ -68,7 +68,6 @@ const router = useRouter()
 
 const { data:categories } = await useAsyncData('categories', () => queryContent('/categories/').find())
 
-
 const popoverHover = ref(false)
 const popoverTimeout = ref(null)
 

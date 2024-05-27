@@ -25,30 +25,34 @@ export const useCart = () => {
             }
         })
 
-        cart.value = response.value
+        cart.value = response
     }   
 
     const minus = async (product) => {
-        
-        const newQty = cart.value.products.find(o => o.id === product.id).pivot.qty - 1
 
-        const { data:response } = await useApiFetch(`carts/${cart.value.cookie_id}`, {method: 'PUT', body:{'product':product, 'qty': newQty}})
+        const response = await $fetch(`/api/carts/${cart.value.id}/minus`, {
+            method: 'PUT', 
+            body: {
+                'product': product.slug,
+                'products': cart.value.products
+            }
+        })
 
-        cart.value = response.value
+        cart.value = response
 
     }
 
     const plus = async (product) => {
-        const newQty = cart.value.products.filter(o => o.id === product.id).length + 1
 
         const response = await $fetch(`/api/carts/${cart.value.id}/plus`, {
             method: 'PUT', 
             body: {
-                'product':product.slug, 
+                'product': product.slug,
+                'products': cart.value.products
             }
         })
 
-        cart.value = response.value
+        cart.value = response
 
     }
 

@@ -37,13 +37,13 @@
                         v-if="filtersVisible"
                         class="mt-12 mr-6"
                         :params="category.parameters"
-                        :products="originalProducts.data"
+                        :products="originalProducts"
                         :meta=products.meta
                         @filter="handleFilter"
 
                     />
 
-                <ProductsGrid :products="products" :pending="pending" />
+                <ProductsGrid :products="filteredProducts" :pending="pending" />
             </div>
         </div>
 
@@ -85,22 +85,45 @@ const setSort = (sort, order) => {
     refresh()
 }
 
-const { data:products, pending } = await useAsyncData('products', () => queryContent('/products/').where({'categories': { $in: props.category.slug }}).find())
+const { data:products, pending } = await useAsyncData('products', () => queryContent('/products/')
+    .where({'categories': { $in: props.category.slug }})
+    .find()
+)
+
 products.value.meta = {
-    min_price: Math.min(products.value.map(e => e.price)),
-    max_price: Math.max(products.value.map(e => e.price))
+    min_price: Math.min(...products.value.map(e => e.price)),
+    max_price: Math.max(...products.value.map(e => e.price))
 
 }
 
 // keep the original array of products, otherwise parameters will disapear
 const originalProducts = products.value
 
+const filteredProducts = ref()
+filteredProducts.value = products.value
 
-const handleFilter = (filters) => {
-    query.value.price = filters.price
-    query.value.parameters = JSON.stringify(filters.parameters)
+const handleFilter = (activeFilters) => {
+    query.value.price = activeFilters.price
+    query.value.parameters = JSON.stringify(activeFilters.parameters)
 
-    refresh()
+    console.log(activeFilters.price)
+    navigateTo(useRoute().path + '?price=' + JSON.stringify(query.value.price))
+
+    filteredProducts.value = products.value
+
+    Object.entries(activeFilters.parameters).forEach(([key,value]) => {
+        if(value.length)
+        {
+            filteredProducts.value = products.value.filter((e) => {
+                if ('parameters' in e && e.parameters[key] == value)
+                {
+                    return true
+                }
+            })
+        }
+    
+    }); 
+    
 }
 
 const filtersVisible = ref(true)

@@ -7,7 +7,7 @@ export default eventHandler(async (event) =>
     const id = getRouterParam(event, 'id')
     const body = await readBody(event)
 
-    const existing = body.products.find(e => e.slug == body.product.slug)
+    const existing = body.products.find(e => e.slug == body.product)
 
     if (existing)
     {
@@ -26,8 +26,8 @@ export default eventHandler(async (event) =>
         .update({ products:body.products })
         .eq('id', id)
         .select()
+        .single()
 
         return data
 
-    
 })
