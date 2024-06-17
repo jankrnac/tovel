@@ -4,6 +4,14 @@ export default defineNuxtConfig({
 		enabled: true 
 	},
 
+	devServer: {
+		port: 3002
+	},
+
+	future: {
+		compatibilityVersion: 4,
+	},
+
 	modules: [
         '@nuxtjs/tailwindcss',
         '@nuxt/content',
