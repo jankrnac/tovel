@@ -5,7 +5,13 @@ export default defineNuxtConfig({
 	},
 
 	devServer: {
-		port: 3002
+		port: 3000
+	},
+
+	runtimeConfig: {
+		public:{
+			apiBase: ''
+		}
 	},
 
 	future: {
@@ -13,12 +19,10 @@ export default defineNuxtConfig({
 	},
 
 	modules: [
-        '@nuxtjs/tailwindcss',
         '@nuxt/content',
-        'nuxt-icon',
         '@nuxt/image',
-        "@nuxtjs/supabase",
-		'@nuxtjs/google-fonts'
+        '@nuxtjs/google-fonts',
+        "@nuxt/ui"
     ],
 
     supabase: {

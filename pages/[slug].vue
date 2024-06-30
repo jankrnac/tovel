@@ -1,6 +1,5 @@
 <template>
     
-    
     <CategoryProductsPage v-if="model == 'categories'" :category="asset" />
     <ProductPage v-if="model == 'products'" :product="asset" />
     <PagePage v-if="model == 'pages'" :page="asset" />
@@ -12,9 +11,9 @@
 
 const route = useRoute()
 
-const { data:asset } = await useAsyncData(() => queryContent('/').where({'slug': route.params.slug}).findOne())
+const { data:asset } = useApiFetch(route.params.slug)
 
-const model = asset.value._path?.split('/')[1]
+const model = asset.value.model
 </script>
 
 <script>

@@ -1,13 +1,14 @@
 <template>
-    <div class="min-h-screen flex flex-col relative dark:bg-slate-900">
 
-        <AppHeader />
+<div class="min-h-screen flex flex-col relative dark:bg-slate-900">
 
-        <slot />
+    <AppHeader />
+
+    <slot />
         
-        <AppFooter />
+    <AppFooter />
 
-  </div>
+</div>
 </template>
 
 <script setup>

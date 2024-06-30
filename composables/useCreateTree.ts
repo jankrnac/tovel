@@ -1,15 +1,15 @@
 export default (dataset) => {
     const hashTable = Object.create(null)
-    dataset.forEach(aData => hashTable[aData._id] = {...aData, children: []})
+    dataset.forEach(aData => hashTable[aData.id] = {...aData, children: []})
     const dataTree = [];
     dataset.forEach(Datae => {  
-      if (Datae.parents  && Datae.parents.length > 0) {    
-        Datae.parents.forEach( aData => {    
-          hashTable[aData._id].children.push(hashTable[Datae._id])
+      if (JSON.parse(Datae.parents)  && JSON.parse(Datae.parents).length > 0) {    
+        JSON.parse(Datae.parents).forEach( aData => {    
+          hashTable[aData].children.push(hashTable[Datae.id])
       });
       }
       else{
-        dataTree.push(hashTable[Datae._id])
+        dataTree.push(hashTable[Datae.id])
       }
       
     });

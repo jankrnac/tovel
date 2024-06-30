@@ -61,13 +61,13 @@ const props = defineProps({
         type: Object
     }
 })
-
+    
 useHead({
     title: props.category.name + " | " + config.appName
 })
 
 
-const { data:categories } = await useAsyncData('categories', () => queryContent('/categories/').find())
+const { categories } = await useCategories()
 
 const query = ref({
     categories: [props.category.id]

@@ -3,7 +3,7 @@
     
     <div class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
         <nuxt-link :to="'/'+product.slug">
-            <nuxt-img :src="product.images[0]" sizes="236px":alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
+            <nuxt-img :src="product.images[0]" sizes="536px" densities="x1" :alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
         </nuxt-link>
     </div>
     <div class="flex flex-1 flex-col space-y-3 py-4">
@@ -12,12 +12,12 @@
                 {{ product.name }}
             </nuxt-link>
         </h3>
-        <p class="text-sm text-gray-500 line-clamp-4 text-justify">{{ product.desc }}</p>
+        <p class="text-sm text-gray-500 line-clamp-4">{{ product.desc }}</p>
         <div class="flex flex-1 justify-between items-center select-none">
             <p class="text-base font-semibold text-gray-900">{{ product.price }} Kč</p>
 
             
-            <div v-if="cart.products.map(e => e.slug).includes(product.slug)" class="flex items-center 0 text-gray-100 text-sm">
+            <div v-if="cart.cartProduct.map(e => e.slug).includes(product.slug)" class="flex items-center 0 text-gray-100 text-sm">
 
                 <div class="rounded-l flex items-center bg-gray-800 hover:bg-gray-700 px-1.5 py-1 cursor-pointer"  @click="plus(product)" ><Icon name="i-ph-plus-bold" size="16px" /></div>
                     <div class="font-semibold bg-gray-800 py-0.5">{{cart.products.find(e => e.slug == product.slug).qty}}</div>

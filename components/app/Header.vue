@@ -13,9 +13,9 @@
 
                         <!-- Mobile menu handle and search (lg-) -->
                         <div class="flex items-center lg:hidden">
-                            <button type="button" class="rounded-md bg-white" @click="openMobileMenu">
+                            <button type="button" class="rounded-md mr-5" @click="openMobileMenu">
                                 <span class="sr-only">Open menu</span>
-                                <Icon name="ph:list-thin" aria-hidden="true" />
+                                <Icon name="ph:list" aria-hidden="true" />
                             </button>
                         </div>
             
@@ -23,14 +23,14 @@
                         <div class="flex items-center">
                             <nuxt-link to="/" class="flex items-center">
                                 <span class="sr-only">Your Company</span>
-                                <AppLogo class="w-10 h-10 mr-6 ml-2 lg:mr-0" />
+                                <AppLogo class="mr-6 ml-2 lg:mr-3" />
                                 <div class="hidden lg:flex font-pacifico text-2xl lg:ml-4 text-primary">Tovel</div>
                             </nuxt-link>
                         </div>
                         
                         <!-- Center header -->
                         <div class="flex flex-grow items-center justify-end text-primary">
-                            <div class="flex items-center flex-grow lg:ml-8 gap-x-6">
+                            <div class="flex items-center flex-grow lg:ml-8 gap-x-3">
                                 
                                 
                                 <div class="flex flex-grow space-x-8">
@@ -48,29 +48,25 @@
                                 <div class="flex items-center">
 
                                     <!-- User dropdown -->
-                                    <Popover class="relative">
-                                        <PopoverButton :id="userPopoverId" class="bg-transparent font-semibold outline-transparent border-transparent">
-                                            <Icon name="ph:user-thin" aria-hidden="true" />
-                                        </PopoverButton>
-
-                                        <transition name="fade">
-                                            <PopoverPanel class="absolute left-1/2 z-10 mt-2 flex w-screen max-w-min -translate-x-1/2 px-4">
+                                    <UPopover mode="hover">
+                                        <UButton color="white" :padded="true" variant="ghost"><Icon name="ph:user-thin" size="22px"/></UButton>
+                                
+                                            <template #panel>
                                                 <div class="w-64 shrink rounded-xl bg-white p-2 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
                                                 <nuxt-link to="/signin"  class="flex justify-between p-2 hover:bg-gray-100 rounded-md">
                                                     <span class="pl-1">Sign in</span>
                                                     <Icon name="ph:sign-in-thin" size="22px"/>
                                                 </nuxt-link>
                                                 </div>
-                                            </PopoverPanel>
-                                        </transition>
-                                    </Popover>
+                                            </template>
+                                    </UPopover>
                                 </div>
 
                                 <!-- Cart icon -->
                                 <div class="flow-root text-primary">
                                     <nuxt-link to="/cart" class="group flex items-center">
                                         <Icon name="ph:bag-simple-thin" class="flex-shrink-0 group-hover:text-gray-500" aria-hidden="true" />
-                                        <span class="inline-flex ml-1 items-center rounded-md bg-fifth text-white px-1.5 py-0 text-sm font-bold">{{ cart.products.length }}</span>
+                                        <span class="inline-flex ml-1 items-center rounded-md bg-fifth text-white px-1.5 py-0 text-sm font-bold">{{ cart.cartProduct.length }}</span>
                                         <span class="sr-only">items in cart, view bag</span>
                                     </nuxt-link>
                                 </div>
@@ -88,7 +84,6 @@
   
 <script setup>
 
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { onClickOutside, refDebounced } from '@vueuse/core'
 
 const mobileMenu = ref(null)
