@@ -7,11 +7,11 @@ export const useCart = () => {
 
     const getCart = async () => { 
 
-        const { data:response, error } = await useApiFetch('/carts', {
+        const response = await $fetch('/api/carts', {
             query: {'cookie': cookie.value}
         })
 
-        cart.value = response.value
+        cart.value = response
 
     }
 

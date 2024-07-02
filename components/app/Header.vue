@@ -70,7 +70,6 @@
                                         <span class="sr-only">items in cart, view bag</span>
                                     </nuxt-link>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -90,8 +89,6 @@ const mobileMenu = ref(null)
 const searchVisible = ref(false)
 const searchQuery = ref('')
 const debouncedQuery = refDebounced(searchQuery, 350)
-
-const userPopoverId = useId()
 
 const cart = useState('cart')
 

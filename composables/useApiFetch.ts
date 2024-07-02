@@ -13,10 +13,9 @@ export const useApiFetch = (url, opts = {}) => {
         headers['Authorization'] = 'Bearer '+ token.value
     }
     
-    return useFetch(url, {
+    return $fetch(url, {
         ...opts,
         baseURL: config.public.apiBase,
         headers: { ...headers },
-   
     })
 }

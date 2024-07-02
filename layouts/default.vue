@@ -3,7 +3,6 @@
 <div class="min-h-screen flex flex-col relative dark:bg-slate-900">
 
     <AppHeader />
-
     <slot />
         
     <AppFooter />
@@ -13,8 +12,8 @@
 
 <script setup>
     
-    const cart = useCart()
+    const { getCart } = useCart()
     
-    await cart.getCart()
+    await getCart()
 
 </script>

@@ -1,22 +1,16 @@
 export default eventHandler(async (event) => 
 {
-    const client = await serverSupabaseClient(event)
+    const { cookie } = getQuery(event)
 
-    const { cookie_id } = getQuery(event)
+    const config = useRuntimeConfig()
 
-    const { data } = await client
-    .from('carts')
-    .select()
-    
-    if (!data.length) {
-        const { data } = await client
-        .from('carts')
-        .insert({guest_id: cookie_id})
-        .select()
+    const response = await $fetch('/carts', {
+        query: {
+            cookie: cookie
+        },
+        baseURL: config.public.apiBase
+    })
 
-        return data
-    }
-
-    return data
+    return response
     
 })

@@ -23,7 +23,7 @@
 
 const router = useRouter()
 
-const { data:categories } = await useApiFetch('categories')
+const { data:categories } = await useFetch('/api/categories')
 
 const popoverHover = ref(false)
 const popoverTimeout = ref(null)

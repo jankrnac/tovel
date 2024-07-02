@@ -28,6 +28,6 @@
 
 const cart = useState('cart')
     
-const { data:cartProducts } = await useAsyncData('cartProducts', () => queryContent('/products/').where({slug: { $in: cart.value.products.map(e => e.slug) }}).find())
+const cartProducts = []
 
 </script>
