@@ -13,7 +13,8 @@
 
 <script setup>
     
-    const { getCart } = useCart()
-    await getCart()
+    const cart = useCart()
+    
+    await cart.getCart()
 
 </script>

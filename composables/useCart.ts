@@ -7,7 +7,7 @@ export const useCart = () => {
 
     const getCart = async () => { 
 
-        const { data:response, error } = await useApiFetch('carts', {
+        const { data:response, error } = await useApiFetch('/carts', {
             query: {'cookie': cookie.value}
         })
 
@@ -17,12 +17,11 @@ export const useCart = () => {
 
     const add = async (product, qty) => {
         
-        const response = await $fetch(`/api/carts/${cart.value.id}/add`, {
-            method: 'PUT', 
+        const response = await useApiFetch(`/carts/${cart.value.id}/add`, {
+            method: 'POST', 
             body:{
                 'product':product, 
                 'qty': qty,
-                'products': cart.value.products
             }
         })
 
