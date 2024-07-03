@@ -4,6 +4,7 @@
     <ProductPage v-if="model == 'products'" :product="asset" />
     <PagePage v-if="model == 'pages'" :page="asset" />
 
+
 </template>
 
 
@@ -11,7 +12,7 @@
 
 const route = useRoute()
 
-const { data:asset } = useApiFetch(route.params.slug)
+const { data:asset } = await useFetch('/api/asset/'+route.params.slug)
 
 const model = asset.value.model
 </script>

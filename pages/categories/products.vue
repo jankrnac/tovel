@@ -7,8 +7,8 @@
             <h1 class="font-extrabold text-2xl pt-6 md:pt-0 mb-6 text-center md:text-left">{{category.name}}</h1>
             <p class="mb-12 font-light">{{category.desc}}</p>
             
-            <ul v-if="categories.find(e => e.parents.map(e=>e.id).includes(category.id))" class="flex mb-12">
-                <li v-for="child in categories.filter(e => e.parents.map(e=>e.id).includes(category.id))">
+            <ul v-if="categories.find(e => JSON.parse(e.parents).map(e=>e.id).includes(category.id))" class="flex mb-12">
+                <li v-for="child in categories.filter(e => JSON.parse(e.parents).map(e=>e.id).includes(category.id))">
                     <nuxt-link :to="'/'+child.slug" class="flex flex-col justify-center items-center">  
                         <div class="w-32 h-32">
                             <img :src="useCdnImage(child.image,'category').src" class="max-w-full max-h-full" />
@@ -67,7 +67,7 @@ useHead({
 })
 
 
-const { categories } = await useCategories()
+const { data:categories } = await useFetch('/api/categories')
 
 const query = ref({
     categories: [props.category.id]
