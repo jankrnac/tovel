@@ -36,7 +36,7 @@
                     <ProductsFilters
                         v-if="filtersVisible"
                         class="mt-12 mr-6"
-                        :params="category.parameters"
+                        :params="category.categoryParameter"
                         :products="originalProducts"
                         :meta=products.meta
                         @filter="handleFilter"

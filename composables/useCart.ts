@@ -17,8 +17,8 @@ export const useCart = () => {
 
     const add = async (product, qty) => {
         
-        const response = await useApiFetch(`/carts/${cart.value.id}/add`, {
-            method: 'POST', 
+        const response = await $fetch(`/api/carts/${cart.value.id}/add`, {
+            method: 'PUT', 
             body:{
                 'product':product, 
                 'qty': qty,

@@ -26,7 +26,7 @@
         }
 	})
 
-    const { data } = await useAsyncData(() => queryContent(`/products/`).where({'slug': { $in : props.products}}).find())
+    const { data } = await useFetch('/api/products')
 
 
 </script>

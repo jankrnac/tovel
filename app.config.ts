@@ -1,6 +1,6 @@
 // app.config.ts
 export default defineAppConfig({
-    appName: "Tashky",
+    appName: "JK Eshop",
     dataSource: 'medusa', 		//[api, content]
     maxWidth: '1900px',
     nuxtIcon: {
