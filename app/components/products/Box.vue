@@ -1,11 +1,13 @@
 <template>
-<div class="group relative flex flex-col  bg-white" @mouseover="toCartButtonVisible=true" @mouseout="toCartButtonVisible=false">
+<div class="group relative" @mouseover="toCartButtonVisible=true" @mouseout="toCartButtonVisible=false">
     
     <div class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
-        <nuxt-link :to="'/'+product.slug">
-            <Image :src="product.fileProduct[0].file.path" sizes="536px" densities="x1" type="products" :alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
+        <nuxt-link :to="'/'+product.slug" class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
+            <Image v-if="product.fileProduct.length" :src="product.fileProduct[0].file.path" sizes="536px" densities="x1" type="products" :alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
+            <Placeholder v-else class="aspect-square" />
         </nuxt-link>
     </div>
+    
     <div class="flex flex-1 flex-col space-y-3 py-4">
         <h3 class="text-sm font-semibold text-gray-900">
             <nuxt-link :to="'/'+product.slug">
@@ -49,8 +51,9 @@ const props = defineProps({
 
 const toCartButtonVisible = ref(false)
 
+const cart = useState('cart')
 
-const { cart, add, minus, plus } = useCart()
+const { add, minus, plus } = useCart()
 
 const toCart = () => {
     add(props.product, 1)

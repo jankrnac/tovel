@@ -3,6 +3,7 @@
 <div class="min-h-screen flex flex-col relative dark:bg-slate-900">
 
     <AppHeader />
+
     <slot />
         
     <AppFooter />
