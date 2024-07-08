@@ -3,7 +3,7 @@
 <div class="flex py-6 sm:py-10">
     
     <div class="flex-shrink-0">
-        <nuxt-img :src="product.images[0]" :alt="product.slug" sizes="200px" class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48" />
+        <Image :src="product.fileProduct[0].file.path" type="products" :alt="product.slug" sizes="200px" class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48" />
     </div>
   
     <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
@@ -22,7 +22,7 @@
             <div class="mt-4 sm:mt-0 sm:pr-9">
                 <div class="flex flex-grow justify-center items-center ml-6 space-x-2">
                     <Icon name="ph:plus-circle-thin" class="text-4xl text-gray-600 cursor-pointer hover:i-ph-plus-circle-fill transition-all" @click="plus(product)" />
-                        <input type="text" class="border border-gray-300 w-24 px-2 py-1 rounded-md" v-model="cart.products.find(e => e.slug == product.slug).qty" />
+                        <input type="text" class="border border-gray-300 w-24 px-2 py-1 rounded-md" v-model="cart.cartProduct.find(e => e.productId == product.id).qty" />
                     <Icon name="ph:minus-circle-thin" class="text-4xl text-gray-600 cursor-pointer hover:i-ph-minus-circle-fill transition-all" @click="minus(product)" />
                 </div>
         

@@ -4,14 +4,14 @@
         <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
 
           	<!-- Image gallery -->
-          	<TabGroup v-if="product.images.length" as="div" class="flex flex-col-reverse">
+          	<TabGroup v-if="product.fileProduct.length" as="div" class="flex flex-col-reverse">
 				<!-- Image selector -->
 				<div class="mx-auto hidden w-full max-w-2xl sm:block lg:max-w-none">
 					<TabList class="grid grid-cols-4 gap-6">
-						<Tab v-for="image in product.images" :key="image.id" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" v-slot="{ selected }">
+						<Tab v-for="image in product.fileProduct" :key="image.id" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" v-slot="{ selected }">
 							<span class="sr-only">{{ image.name }}</span>
 							<span class="absolute inset-0 overflow-hidden rounded-md">
-								<nuxt-img :src="product.images[0]" alt="" sizes="200px" class="h-full w-full object-cover object-center" />
+								<Image :src="product.fileProduct[0].file.path" :alt="product.name" type="products" sizes="200px" class="h-full w-full object-cover object-center" />
 							</span>
 							<span :class="[selected ? 'ring-indigo-500' : 'ring-transparent', 'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2']" aria-hidden="true" />
 						</Tab>
@@ -19,8 +19,8 @@
 				</div>
   
             	<TabPanels class="aspect-h-1 aspect-w-1 w-full mb-5">
-              		<TabPanel v-for="image in product.images" :key="image.id">
-                		<nuxt-img :src="image" :alt="image.alt" sizes="xl:852px" class="h-full w-full object-cover object-center sm:rounded-lg" />
+              		<TabPanel v-for="image in product.fileProduct" :key="image.id">
+                		<Image :src="image.file.path" :alt="image.alt" sizes="xl:852px" type="products" class="h-full w-full object-cover object-center sm:rounded-lg" />
               		</TabPanel>
             	</TabPanels>
 
@@ -58,7 +58,7 @@
 
 			<div class="mt-6 flex">
 				
-				<div v-if="cart.products.map(o => o.id).includes(product.id)" class="flex">
+				<div v-if="cart.cartProduct.map(o => o.id).includes(product.id)" class="flex">
                     
                     <div class="flex items-center space-x-2 mr-2 bg-gray-800 rounded-md px-4 py-3 text-gray-200">
                         <Icon name="ph:minus" class="text-3xl cursor-pointer hover:text-red-500" @click="minus(product)" />

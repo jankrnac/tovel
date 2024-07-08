@@ -7,7 +7,7 @@
 <header class="relative">
     <nav aria-label="Top">
         <div class="p-6">
-            <div class="mx-auto max-w-app lg:px-2">
+            <div class="mx-auto max-w-app lg:px-8">
                 <div class="border-gray-200">
                     <div class="flex h-18 text-primary">
 

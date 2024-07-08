@@ -26,7 +26,11 @@
         }
 	})
 
-    const { data } = await useFetch('/api/products')
+    const { data } = await useFetch('/api/products', {
+        query: {
+            products: props.products
+        }
+    })
 
 
 </script>

@@ -85,10 +85,11 @@ const setSort = (sort, order) => {
     refresh()
 }
 
-const { data:products, pending } = await useAsyncData('products', () => queryContent('/products/')
-    .where({'categories': { $in: props.category.slug }})
-    .find()
-)
+const { data:products, pending } = await useFetch('/api/products', {
+    query: {
+        categories: props.category.slug
+    }
+})
 
 products.value.meta = {
     min_price: Math.min(...products.value.map(e => e.price)),
