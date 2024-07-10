@@ -1,10 +1,10 @@
 <template>
 <div class="group relative" @mouseover="toCartButtonVisible=true" @mouseout="toCartButtonVisible=false">
     
-    <div class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
-        <nuxt-link :to="'/'+product.slug" class="aspect-square bg-gray-100 group-hover:opacity-75 sm:aspect-none rounded-lg overflow-hidden">
-            <Image v-if="product.fileProduct.length" :src="product.fileProduct[0].file.path" sizes="536px" densities="x1" type="products" :alt="product.name" class="h-full w-full object-cover object-center sm:h-full sm:w-full" />
-            <Placeholder v-else class="aspect-square" />
+    <div class="aspect-[1/1]">
+        <nuxt-link :to="'/'+product.slug" class="aspect-square">
+            <Image v-if="product.fileProduct.length" :src="product.fileProduct[0].file.path" sizes="536px" densities="x1" type="products" :alt="product.name"/>
+            <Placeholder v-else class="aspect-[1/1]" />
         </nuxt-link>
     </div>
     
