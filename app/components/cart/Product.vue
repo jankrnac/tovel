@@ -28,15 +28,13 @@
                 </div>
         
                 <div class="absolute top-0 right-0">
-                    <UButton icon="i-ph-x" color="orange" @click="remove(product)" />
+                    <UButton icon="i-heroicons-x-mark" color="red" />
                 </div>
             </div>
         </div>
   
         <div class="mt-4 flex space-x-2 text-sm text-gray-700">
-            <Icon v-if="product.inStock" name="ph:checkmark text-xl flex-shrink-0 text-green-500" aria-hidden="true" />
-            <Icon v-else name="ph:clock" class="text-xl flex-shrink-0 text-gray-300" aria-hidden="true" />
-            <span>{{ product.inStock ? 'In stock' : `Ships in ${product.leadTime}` }}</span>
+ 
         </div>
     </div>
 </div>

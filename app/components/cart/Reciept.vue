@@ -5,27 +5,28 @@
   
         <dl class="mt-6 space-y-4">
             <div class="flex items-center justify-between">
-                <dt class="text-sm text-gray-600">Subtotal</dt>
-                <dd class="text-sm font-medium text-gray-900">{{$formatPrice(cart.productPrice)}}</dd>
+                <dt class="text-sm text-gray-600">Products price</dt>
+                <dd class="text-sm font-medium text-gray-900">{{cart.cartProduct.map(e=>e.product.price).reduce((a, c) => { return a + c })}} Kc</dd>
             </div>
 
-            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+            <div v-if="cart.deliveryMethod" class="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt class="flex items-center text-sm text-gray-600">
-                    <span>Shipping estimate</span>
+                    <span>Shipping price</span>
                     <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
                         <span class="sr-only">Learn more about how shipping is calculated</span>
                         <div class="i-ph-question text-xl" aria-hidden="true" />
                     </a>
                 </dt>
                 <dd class="text-sm font-medium text-gray-900">{{$formatPrice(cart.subtotal)}}</dd>
-              </div>
-              <div class="flex items-center justify-between border-t border-gray-200 pt-4">
+            </div>
+
+            <div class="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt class="flex text-sm text-gray-600">
-                  <span>Tax estimate</span>
-                  <a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
-                    <span class="sr-only">Learn more about how tax is calculated</span>
-                    <div class="i-ph-question text-xl" aria-hidden="true" />
-                  </a>
+                  	<span>Tax estimate</span>
+                  	<a href="#" class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+                    	<span class="sr-only">Learn more about how tax is calculated</span>
+                    	<div class="i-ph-question text-xl" aria-hidden="true" />
+                  	</a>
                 </dt>
                 <dd class="text-sm font-medium text-gray-900">$8.32</dd>
               </div>
@@ -39,6 +40,8 @@
 				
               	<nuxt-link v-if="route.name == 'cart'" to="/cart/delivery" type="submit" class="block text-center w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none 
              	 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</nuxt-link>
+				
+				<UButton>Submit order</UButton>
             </div>
 </section>
     
