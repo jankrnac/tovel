@@ -2,8 +2,9 @@
 
 <div class="flex py-6 sm:py-10">
     
-    <div class="flex-shrink-0">
-        <Image :src="product.fileProduct[0].file.path" type="products" :alt="product.slug" sizes="200px" class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48" />
+    <div class="flex-shrink-0 w-32">
+        <Image v-if="product.fileProduct.length" :src="product.fileProduct[0].file.path" type="products" :alt="product.slug" sizes="200px" class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48" />
+        <Placeholder v-else class="aspect-[1/1]" />
     </div>
   
     <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
@@ -27,10 +28,7 @@
                 </div>
         
                 <div class="absolute top-0 right-0">
-                    <button type="button" class="inline-flex p-2 rounded-md bg-red-100 text-gray-400 hover:text-gray-500" @click="remove(product)">
-                        <span class="sr-only">Remove</span>
-                        <Icon name="ph:x" class="text-xl" aria-hidden="true" />
-                    </button>
+                    <UButton icon="i-ph-x" color="orange" @click="remove(product)" />
                 </div>
             </div>
         </div>

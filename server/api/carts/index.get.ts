@@ -10,7 +10,7 @@ export default eventHandler(async (event) =>
         },
         baseURL: config.public.apiBase
     })
-
+    
     return response
     
 })

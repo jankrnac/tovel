@@ -33,7 +33,7 @@ export const useCart = () => {
         const response = await $fetch(`/api/carts/${cart.value.id}/minus`, {
             method: 'PUT', 
             body: {
-                'product': product.slug,
+                'product': product.id,
                 'products': cart.value.products
             }
         })
@@ -47,8 +47,7 @@ export const useCart = () => {
         const response = await $fetch(`/api/carts/${cart.value.id}/plus`, {
             method: 'PUT', 
             body: {
-                'product': product.slug,
-                'products': cart.value.products
+                'product': product.id,
             }
         })
 
@@ -58,9 +57,14 @@ export const useCart = () => {
 
     const remove = async (product) => {
 
-        const { data:response } = await useApiFetch(`carts/${cart.value.cookie_id}/products/${product.id}`, {method: 'DELETE'})
+        const response = await $fetch(`/api/carts/${cart.value.id}/remove`, {
+            method: 'PUT', 
+            body: {
+                'product': product.id,
+            }
+        })
 
-        cart.value = response.value
+        cart.value = response
     }
 
     const setCartDelivery = async (id) => {

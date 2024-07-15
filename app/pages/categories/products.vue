@@ -1,9 +1,8 @@
 <template>
     <div class="flex-grow">
 
-    <div class="flex max-w-app p-4 mx-auto md:py-6 xl:py-8 mb-6">
+    <div class="max-w-app p-4 mx-auto md:py-6 xl:py-8 mb-6">
         
-        <div>
             <h1 class="font-extrabold text-2xl pt-6 md:pt-0 mb-6 text-center md:text-left">{{category.name}}</h1>
             <p class="mb-12 font-light">{{category.desc}}</p>
             
@@ -31,7 +30,7 @@
                 </ul>
             </div>
 
-            <div class="flex">
+            <div class="flex flex-1">
 
                     <ProductsFilters
                         v-if="filtersVisible"
@@ -43,9 +42,8 @@
 
                     />
 
-                <ProductsGrid :products="filteredProducts" :pending="pending" />
+                <ProductsGrid :products="filteredProducts" :pending="status" />
             </div>
-        </div>
 
     </div>
 
@@ -84,12 +82,14 @@ const setSort = (sort, order) => {
 
     refresh()
 }
+const activeFilters = ref()
 
-const { data:products, pending } = await useFetch('/api/products', {
+const { data:products, refresh, status } = await useAsyncData('products', () => $fetch('/api/products', {
     query: {
-        categories: props.category.slug
-    }
-})
+        categories: props.category.id,
+        filters: activeFilters.value
+    },
+}))
 
 products.value.meta = {
     min_price: Math.min(...products.value.map(e => e.price)),
@@ -103,27 +103,13 @@ const originalProducts = products.value
 const filteredProducts = ref()
 filteredProducts.value = products.value
 
-const handleFilter = (activeFilters) => {
-    query.value.price = activeFilters.price
-    query.value.parameters = JSON.stringify(activeFilters.parameters)
+const handleFilter = (response) => {
 
-    console.log(activeFilters.price)
-    navigateTo(useRoute().path + '?price=' + JSON.stringify(query.value.price))
+    activeFilters.value = JSON.stringify(response)
 
-    filteredProducts.value = products.value
+    console.log(activeFilters.value)
 
-    Object.entries(activeFilters.parameters).forEach(([key,value]) => {
-        if(value.length)
-        {
-            filteredProducts.value = products.value.filter((e) => {
-                if ('parameters' in e && e.parameters[key] == value)
-                {
-                    return true
-                }
-            })
-        }
-    
-    }); 
+    refresh()
     
 }
 
