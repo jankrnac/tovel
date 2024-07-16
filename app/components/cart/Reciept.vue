@@ -38,10 +38,9 @@
   
             <div class="mt-6">
 				
-              	<nuxt-link v-if="route.name == 'cart'" to="/cart/delivery" type="submit" class="block text-center w-full rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none 
-             	 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Checkout</nuxt-link>
+              	<UButton v-if="route.name == 'cart'" to="/cart/delivery" type="submit" block size="xl">Checkout</UButton>
 				
-				<UButton>Submit order</UButton>
+				<UButton v-else>Submit order</UButton>
             </div>
 </section>
     

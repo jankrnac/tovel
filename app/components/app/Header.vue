@@ -24,7 +24,7 @@
                             <nuxt-link to="/" class="flex items-center">
                                 <span class="sr-only">Your Company</span>
                                 <AppLogo class="mr-6 ml-2 lg:mr-3" />
-                                <div class="hidden lg:flex font-pacifico text-2xl lg:ml-4 text-primary">Tovel</div>
+                                <div class="hidden lg:flex font-pacifico text-2xl lg:ml-4 text-black">Tovel</div>
                             </nuxt-link>
                         </div>
                         

@@ -4,7 +4,7 @@
     <div v-for="category in useCreateTree(categories)">
         <UPopover mode="hover">
             
-            <UButton variant="soft" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug"/>
+            <UButton variant="ghost" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug"/>
 
             <template #panel>
             <div class="p-4 w-full max-w-screen">
