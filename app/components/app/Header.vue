@@ -65,7 +65,7 @@
                                 <!-- Cart icon -->
                                 <div class="flow-root text-primary">
                                     <nuxt-link to="/cart" class="group flex items-center">
-                                        <Icon name="ph:bag-simple-thin" class="flex-shrink-0 group-hover:text-gray-500" aria-hidden="true" />
+                                        <Icon name="ph:bag-simple-thin" class="flex-shrink-0 group-hover:text-gray-500" color="black" aria-hidden="true" />
                                         <span class="inline-flex ml-1 items-center rounded-md bg-fifth text-white px-1.5 py-0 text-sm font-bold">{{ cart.cartProduct.length }}</span>
                                         <span class="sr-only">items in cart, view bag</span>
                                     </nuxt-link>

@@ -4,14 +4,14 @@
     <div v-for="category in useCreateTree(categories)">
         <UPopover mode="hover">
             
-            <UButton variant="ghost" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug"/>
+            <UButton variant="ghost" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug" color="gray"/>
 
             <template #panel>
-            <div class="p-4 w-full max-w-screen">
-                <template v-for="child in category.children">
-                    {{child.name}}
-                </template>
-            </div>
+				<div class="p-4 w-full max-w-screen">
+					<template v-for="child in category.children">
+						{{child.name}}
+					</template>
+				</div>
             </template>
         </UPopover>
     </div>

@@ -40,7 +40,7 @@
 				
               	<UButton v-if="route.name == 'cart'" to="/cart/delivery" type="submit" block size="xl">Checkout</UButton>
 				
-				<UButton v-else>Submit order</UButton>
+				<UButton v-else block size="xl" type="submit" :loading="pending">Submit order</UButton>
             </div>
 </section>
     
@@ -52,6 +52,10 @@ defineProps({
     meta:{
         type: Object
     },
+    pending: {
+        type: Boolean,
+        default: false
+    }
 })
 const { cart, resetCart } = await useCart()
 const route = useRoute()

@@ -1,47 +1,47 @@
 export default defineNuxtConfig({
-
-  	devtools: { 
-		enabled: true 
+ devtools: { 
+					enabled: true 
 	},
 
-	devServer: {
-		port: 3000
+ devServer: {
+					port: 3000
 	},
 
-	runtimeConfig: {
-		public:{
-			apiBase: ''
-		}
+ runtimeConfig: {
+					public:{
+									apiBase: ''
+					}
 	},
 
-	future: {
-		compatibilityVersion: 4,
+ future: {
+					compatibilityVersion: 4,
 	},
 
-	modules: [
-        '@nuxt/content',
-        '@nuxt/image',
-        '@nuxtjs/google-fonts',
-        "@nuxt/ui"
-    ],
+ modules: [
+					'@nuxt/content',
+					'@nuxt/image',
+					'@nuxtjs/google-fonts',
+					"@nuxt/ui"
+	],
 
-    supabase: {
-		cookieOptions: {
-		  	secure: process.env.NODE_ENV === 'production',
-		},
-		redirect: false
+ supabase: {
+					cookieOptions: {
+									secure: process.env.NODE_ENV === 'production',
+					},
+					redirect: false
 	},
 
-	googleFonts: {
-		families: {
-			Pacifico: true,
-		}
+ googleFonts: {
+					families: {
+									Pacifico: true,
+					}
 	},
 
-	content: {
-		experimental: {
-			search: true
-		}
-	}
+ content: {
+					experimental: {
+									search: true
+					}
+	},
 
+ compatibilityDate: '2024-07-16'
 })
