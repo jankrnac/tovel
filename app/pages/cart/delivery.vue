@@ -61,10 +61,7 @@ async function onSubmit(event) {
 	pending.value = false
 
 	navigateTo({
-		path: '/orders/success',
-		query: {
-			orderNumber: 111
-		}
+		path: '/orders/'+111
 	})
 
 }
