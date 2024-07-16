@@ -1,3 +1,5 @@
+import { showError } from "nuxt/app"
+
 export default eventHandler(async (event) => 
 {
     const { cookie } = getQuery(event)
