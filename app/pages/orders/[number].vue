@@ -6,6 +6,7 @@
             <Icon name="ph:check-circle-thin" size="100px" color="green"/>
 
             <h2 class="font-semibold text-2xl">Order successful</h2>
+
         </div>
     </div>
 </div>
@@ -14,6 +15,6 @@
 
 <script setup>
 
-const { data:order } = await useFetch('/api/orders/' + useRoute().params)
+const { data:order } = await useFetch('/api/orders/' + useRoute().params.number)
 
 </script>

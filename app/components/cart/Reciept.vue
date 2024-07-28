@@ -6,7 +6,7 @@
         <dl class="mt-6 space-y-4">
             <div class="flex items-center justify-between">
                 <dt class="text-sm text-gray-600">Products price</dt>
-                <dd class="text-sm font-medium text-gray-900">{{cart.cartProduct.map(e=>e.product.price).reduce((a, c) => { return a + c })}} Kc</dd>
+                <dd class="text-sm font-medium text-gray-900">{{cart.cartProduct.map(e => { return e.price * e.qty }).reduce((a, c) => { return a + c })}} Kc</dd>
             </div>
 
             <div v-if="cart.deliveryMethod" class="flex items-center justify-between border-t border-gray-200 pt-4">
@@ -57,18 +57,9 @@ defineProps({
         default: false
     }
 })
-const { cart, resetCart } = await useCart()
+const { cart, resetCart } = useCart()
 const route = useRoute()
 
-const creatingOrder = ref(false)
-const createOrder = async () => {
-
-    creatingOrder.value = true
-    
-    const { data:order } = await useApiFetch('order', {method: "POST", body: {cartid: cart.value.id}})
-
-    await navigateTo(`/orders/${order.value.id}/success?cookie_id=${cart.value.cookie_id}`)
-}
 
 const modal = ref(null)
 //the variable name (modal) needs to match the template ref name 
