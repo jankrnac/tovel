@@ -104,7 +104,7 @@ async function onSubmit() {
 	pending.value = false
 
 	navigateTo({
-		path: '/orders/'+ order.number
+		path: '/orders/'+ order.number + '?success=true'
 	})
 
 }
