@@ -44,5 +44,9 @@ export default defineNuxtConfig({
 		}
 	},
 
+	ui: {
+		icons: ['ph']
+	},
+
 	compatibilityDate: '2024-07-16'
 })

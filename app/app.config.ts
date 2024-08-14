@@ -6,6 +6,6 @@ export default defineAppConfig({
       	size: '24px', 			// default <Icon> size applied
     },
     ui: {
-        primary: 'blue',
+        primary: 'gray',
     }
 })

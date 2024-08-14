@@ -37,7 +37,20 @@
 
                                     <!-- Search -->
                                     <div class="hidden lg:block flex-grow relative">
-                                        <input type="text" v-model="searchQuery" class="w-full border border-gray-200 pr-2 pl-6 py-3 rounded-md bg-gray-50" @keyup="search" placeholder="Search for products"/>
+                                        <UInput 
+                                            v-model="searchQuery" 
+                                            variant="none" 
+                                            icon="i-ph-magnifying-glass-thin"
+                                            class="w-full border border-gray-200 pr-2 py-2 rounded-md bg-gray-50"
+                                            :ui="{ base: 'focus:ring-5' }" 
+                                            @keyup="search"
+                                            placeholder="Search for products"
+                                            ref="searchInput"
+                                        >
+                                            <template #trailing>
+                                                    <UKbd>CTRL+K</UKbd>
+                                            </template>
+                                        </UInput>
                                         <transition name="fade">
                                             <LazySearchResults v-if="searchVisible" ref="searchResults" :query="debouncedQuery" @click="close" />
                                         </transition>
@@ -85,17 +98,30 @@
 
 import { onClickOutside, refDebounced } from '@vueuse/core'
 
+
+
 const mobileMenu = ref(null)
 const searchVisible = ref(false)
 const searchQuery = ref('')
 const debouncedQuery = refDebounced(searchQuery, 350)
+const searchInput = ref()
+
+defineShortcuts({
+  meta_k: {
+    usingInput: true,
+    handler: () => {
+        searchInput.value.$refs.input.focus()
+    }
+    }
+})
 
 const cart = useState('cart')
 
 const openMobileMenu = () => {
     mobileMenu.value.setOpen()
 }
-  
+
+
 
 const search = (event) => {
 

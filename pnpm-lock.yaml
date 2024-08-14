@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@iconify-json/ph':
+    specifier: ^1.1.14
+    version: 1.1.14
   '@nuxt/content':
     specifier: ^2.13.1
     version: 2.13.1(nuxt@3.12.3)(vue@3.4.31)
@@ -1109,6 +1112,12 @@ packages:
 
   /@iconify-json/heroicons@1.1.21:
     resolution: {integrity: sha512-A+3L4KN+TjH3V8fQ2N2dkOOnLLxMgMBzO8RDT0P9YL+YzvLMIbe/lkDLSB8NB8x0DKWmkvTimoo1l4DKMwi7Zg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/ph@1.1.14:
+    resolution: {integrity: sha512-s1hZVaxIpl40qLEhjqPRMcZl4A3M4fZ+77Fi+VuOb/eKkIHIMutAoBHIR+0a3l7psUweZQGj9hSyL2P5CIj6qA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

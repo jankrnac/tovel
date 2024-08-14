@@ -48,7 +48,7 @@ const props = defineProps({
     }
 })
 
-const { data:result, execute } = await useAsyncData(() => queryContent('/').where({'_dir': { $in: ['products','categories'] }}).where({'name': { $icontains: props.query}}).find(), {
+const { data:result, execute } = await useAsyncData(() => $fetch('/api/search/'+props.query), {
     immediate: false
 })
 
