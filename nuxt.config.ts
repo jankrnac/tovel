@@ -34,7 +34,7 @@ export default defineNuxtConfig({
 
 	googleFonts: {
 		families: {
-			Pacifico: true,
+			'Bagel Fat One': true,
 		}
 	},
 

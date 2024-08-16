@@ -4,7 +4,7 @@
     <div class="flex-auto overflow-hidden rounded-md bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
 
         <div class="p-4 w-full">
-            <template v-if="result && result.filter(e=>e._dir == 'categories') && result.filter(e=>e._dir == 'categories').length">
+            <template v-if="result && result.categories.length">
             <h3 class="font-bold mb-2">Categories</h3>
             <ul role="list" class="flex">
             <li v-for="category in result.filter(e=>e._dir == 'categories')" :key="category.id" class="group relative gap-6 rounded-lg p-4 hover:bg-gray-50">
@@ -19,10 +19,10 @@
             </ul>
             </template>
 
-            <template v-if="result && result.filter(e=>e._dir == 'products') && result.filter(e=>e._dir == 'products').length">
+            <template v-if="result && result.products.length">
             <h3 class="font-bold mb-2 mt-6">Products</h3>
             <ul role="list" class="flex">
-            <li v-for="product in result.filter(e=>e._dir == 'products')" :key="product.id" class="group relative gap-6 rounded-lg p-4 hover:bg-gray-50">
+            <li v-for="product in result.products" :key="product.id" class="group relative gap-6 rounded-lg p-4 hover:bg-gray-50">
                     <div class="mb-2"><img src="https://placehold.co/100" /></div>
                     <div class="text-center">
                         <nuxt-link :to="'/'+product.slug" class="text-gray-900">

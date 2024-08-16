@@ -5,11 +5,11 @@
         <UPopover mode="hover">
             
             <UButton variant="ghost" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug" color="gray"/>
-
+			
             <template #panel>
-				<div class="p-4 w-full max-w-screen">
+				<div class="p-5 w-full max-w-screen" :class="{'hidden':category.children.length == 0}">
 					<template v-for="child in category.children">
-						{{child.name}}
+						<nuxt-link :to="'/'+child.slug">{{child.name}}</nuxt-link>
 					</template>
 				</div>
             </template>

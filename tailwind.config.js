@@ -15,7 +15,7 @@ export default {
         },
 
         fontFamily: {
-            'pacifico': ['Pacifico'],        
+            'bagel': ['Bagel Fat One'],        
         }
     }
 }
