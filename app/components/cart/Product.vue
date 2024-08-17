@@ -22,14 +22,14 @@
   
             <div class="mt-4 sm:mt-0 sm:pr-9">
                 <div class="flex flex-grow justify-center items-center ml-6 space-x-2">
-                    <Icon name="ph:minus-circle-thin" class="text-4xl text-gray-600 cursor-pointer hover:i-ph-minus-circle-fill transition-all" @click="minus(product)" />
+                    <UIcon name="i-ph-minus-circle-thin" class="text-3xl text-gray-600 cursor-pointer hover:i-ph-minus-circle-fill" @click="minus(product)" />
                         <input type="text" class="border border-gray-300 w-24 px-2 py-1 rounded-md" v-model="cart.cartProduct.find(e => e.productId == product.id).qty" />
-                    <Icon name="ph:plus-circle-thin" class="text-4xl text-gray-600 cursor-pointer hover:i-ph-plus-circle-fill transition-all" @click="plus(product)" />
+                    <UIcon name="i-ph-plus-circle-thin" class="text-3xl text-gray-600 cursor-pointer hover:i-ph-plus-circle-fill" @click="plus(product)" />
 
                 </div>
         
                 <div class="absolute top-0 right-0">
-                    <UButton icon="i-heroicons-x-mark" color="red" />
+                    <UButton icon="i-ph-trash" color="red" variant="ghost" />
                 </div>
             </div>
         </div>

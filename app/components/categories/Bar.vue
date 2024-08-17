@@ -7,9 +7,9 @@
             <UButton variant="ghost" :label="category.name" class="mx-auto text-base" :to="'/'+category.slug" color="gray"/>
 			
             <template #panel>
-				<div class="p-5 w-full max-w-screen" :class="{'hidden':category.children.length == 0}">
+				<div class="px-4 py-6 w-full max-w-screen" :class="{'hidden':category.children.length == 0}">
 					<template v-for="child in category.children">
-						<nuxt-link :to="'/'+child.slug">{{child.name}}</nuxt-link>
+						<nuxt-link :to="'/'+child.slug" class="rounded-lg px-5 py-2 hover:bg-gray-50">{{child.name}}</nuxt-link>
 					</template>
 				</div>
             </template>

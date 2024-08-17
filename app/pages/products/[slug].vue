@@ -77,9 +77,7 @@
 
 			<section class="mt-24">
 				<ContentDoc v-slot="{ doc }" :path="'products/'+product.slug">
-				<article>
 					<ContentRenderer :value="doc" />
-				</article>
 				</ContentDoc>
 			</section>
     </div>

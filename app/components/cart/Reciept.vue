@@ -38,9 +38,9 @@
   
             <div class="mt-6">
 				
-              	<UButton v-if="route.name == 'cart'" to="/cart/delivery" type="submit" block size="xl">Checkout</UButton>
+              	<UButton v-if="route.name == 'cart'" to="/cart/delivery" type="submit" block size="xl" color="blue">Checkout</UButton>
 				
-				<UButton v-else block size="xl" type="submit" :loading="pending">Submit order</UButton>
+				<UButton v-else block size="xl" type="submit" :loading="pending" color="green">Submit order</UButton>
             </div>
 </section>
     
